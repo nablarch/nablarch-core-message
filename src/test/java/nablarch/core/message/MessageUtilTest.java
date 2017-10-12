@@ -9,6 +9,7 @@ import nablarch.core.ThreadContext;
 import nablarch.core.repository.SystemRepository;
 import nablarch.test.support.SystemRepositoryResource;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -21,6 +22,11 @@ public class MessageUtilTest {
     
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
+
+    @Before
+    public void setUp() throws Exception {
+        Locale.setDefault(Locale.JAPAN);
+    }
 
     @Test
     public void testGetMessageObject() throws Exception {
