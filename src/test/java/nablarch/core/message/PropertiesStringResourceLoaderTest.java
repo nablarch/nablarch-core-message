@@ -7,7 +7,10 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.CharBuffer;
+import java.nio.charset.UnsupportedCharsetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,8 +25,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import mockit.Capturing;
 import mockit.Deencapsulation;
 import mockit.Expectations;
+import mockit.Mock;
 import mockit.Mocked;
 
 /**
@@ -137,27 +142,6 @@ public class PropertiesStringResourceLoaderTest {
         StringResource result = sut.getValue(null);
 
         assertThat(result, is(nullValue()));
-    }
-
-    /**
-     * {@link PropertiesStringResourceLoader#getValue(Object)}のテスト。
-     * プロパティファイルのロードに失敗するケース。
-     *
-     * @throws Exception
-     */
-    @Test
-    public void testGetValue_failed(@Mocked final Properties properties) throws Exception {
-        expectedException.expect(IllegalArgumentException.class);
-        expectedException.expectMessage("failed to load the file. file path = [classpath:messages.properties]");
-
-        new Expectations() {{
-            properties.load(
-                    withAny(new InputStreamReader(FileUtil.getResource("classpath:messages.properties"), "UTF-8")));
-            minTimes = 0;
-            result = new IOException();
-        }};
-
-        sut.getValue(null);
     }
 
     /**
