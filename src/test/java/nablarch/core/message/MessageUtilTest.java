@@ -54,12 +54,12 @@ public class MessageUtilTest {
     @Test
     public void testGetSarogetoPeaMessageObject() throws Exception {
 
-        StringResource messageObject = MessageUtil.getStringResource("sarogetopea");
-        assertThat(messageObject.getId(), is("sarogetopea"));
+        StringResource messageObject = MessageUtil.getStringResource("surrogatepair");
+        assertThat(messageObject.getId(), is("surrogatepair"));
         assertThat(messageObject.getValue(Locale.JAPANESE), is("🙀𪛊"));
 
         Message message = MessageUtil.createMessage(MessageLevel.INFO, "message.with.placeholder",
-                MessageUtil.createMessage(MessageLevel.INFO, "sarogetopea.message"), "🙀🙀🙀");
+                MessageUtil.createMessage(MessageLevel.INFO, "surrogatepair.message"), "🙀🙀🙀");
         assertThat(message.formatMessage(Locale.JAPANESE), is("ここにmessageのメッセージが入る→𪛊𪛊𪛊-🙀🙀🙀"));
     }
 
