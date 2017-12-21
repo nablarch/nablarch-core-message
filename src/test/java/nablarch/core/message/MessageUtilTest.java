@@ -49,6 +49,21 @@ public class MessageUtilTest {
     }
 
     /**
+     * サロゲートペア対応
+     */
+    @Test
+    public void testGetSarogetoPeaMessageObject() throws Exception {
+
+        StringResource messageObject = MessageUtil.getStringResource("surrogatepair");
+        assertThat(messageObject.getId(), is("surrogatepair"));
+        assertThat(messageObject.getValue(Locale.JAPANESE), is("🙀𪛊"));
+
+        Message message = MessageUtil.createMessage(MessageLevel.INFO, "message.with.placeholder",
+                MessageUtil.createMessage(MessageLevel.INFO, "surrogatepair.message"), "🙀🙀🙀");
+        assertThat(message.formatMessage(Locale.JAPANESE), is("ここにmessageのメッセージが入る→𪛊𪛊𪛊-🙀🙀🙀"));
+    }
+
+    /**
      * スレッドコンテキストに言語が設定されていない場合、
      * VMのデフォルトロケールの言語が使用されること。
      */
