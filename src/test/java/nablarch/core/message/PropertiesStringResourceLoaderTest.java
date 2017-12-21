@@ -153,13 +153,15 @@ public class PropertiesStringResourceLoaderTest {
     public void testLoadAll_default() throws Exception {
         List<StringResource> result = sut.loadAll();
 
-        assertThat(result.size(), is(4));
+        assertThat(result.size(), is(6));
 
         assertThat(result, containsInAnyOrder(
                 hasProperty("id", is("default.key")),
                 hasProperty("id", is("load.all.key")),
                 hasProperty("id", is("message.with.placeholder")),
-                hasProperty("id", is("message"))
+                hasProperty("id", is("message")),
+                hasProperty("id", is("surrogatepair")),
+                hasProperty("id", is("surrogatepair.message"))
         ));
     }
 
