@@ -1,35 +1,22 @@
 package nablarch.core.message;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.CharBuffer;
-import java.nio.charset.UnsupportedCharsetException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Properties;
-
-import nablarch.core.util.FileUtil;
-
+import nablarch.test.support.reflection.ReflectionUtil;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import mockit.Capturing;
-import mockit.Deencapsulation;
-import mockit.Expectations;
-import mockit.Mock;
-import mockit.Mocked;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 /**
  * {@link PropertiesStringResourceLoader}のテストクラス。
@@ -107,7 +94,7 @@ public class PropertiesStringResourceLoaderTest {
      */
     @Test
     public void testGetValue_exist() throws Exception {
-        Map<String, Map<String, String>> messages = Deencapsulation.getField(sut, "messages");
+        Map<String, Map<String, String>> messages = ReflectionUtil.getFieldValue(sut, "messages");
         Map<String, String> value = new HashMap<String, String>();
         value.put(Locale.getDefault()
                         .getLanguage(), "existedValue");
@@ -174,7 +161,7 @@ public class PropertiesStringResourceLoaderTest {
     @Test
     public void testLoadAll_exist() throws Exception {
 
-        Map<String, Map<String, String>> messages = Deencapsulation.getField(sut, "messages");
+        Map<String, Map<String, String>> messages = ReflectionUtil.getFieldValue(sut, "messages");
         Map<String, String> value1 = new HashMap<String, String>();
         Map<String, String> value2 = new HashMap<String, String>();
         Map<String, String> value3 = new HashMap<String, String>();
