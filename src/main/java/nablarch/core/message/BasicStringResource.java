@@ -17,11 +17,11 @@ public class BasicStringResource implements StringResource {
     /**
      * メッセージID。
      */
-    private String id;
+    private final String id;
     /**
      * 言語をキーとした文字列のmap。
      */
-    private Map<String, String> formatMap;
+    private final Map<String, String> formatMap;
 
     /**
      * コンストラクタ。
