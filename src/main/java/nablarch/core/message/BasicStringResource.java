@@ -1,5 +1,7 @@
 package nablarch.core.message;
 
+import nablarch.core.util.annotation.Published;
+
 import java.util.Locale;
 import java.util.Map;
 
@@ -9,6 +11,7 @@ import java.util.Map;
  * @author Koichi Asano
  *
  */
+@Published
 public class BasicStringResource implements StringResource {
 
     /**
