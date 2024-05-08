@@ -6,30 +6,18 @@ import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.CharBuffer;
-import java.nio.charset.UnsupportedCharsetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Properties;
-
-import nablarch.core.util.FileUtil;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import mockit.Capturing;
 import mockit.Deencapsulation;
-import mockit.Expectations;
-import mockit.Mock;
-import mockit.Mocked;
 
 /**
  * {@link PropertiesStringResourceLoader}のテストクラス。
