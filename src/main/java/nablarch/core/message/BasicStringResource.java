@@ -1,5 +1,7 @@
 package nablarch.core.message;
 
+import nablarch.core.util.annotation.Published;
+
 import java.util.Locale;
 import java.util.Map;
 
@@ -9,16 +11,17 @@ import java.util.Map;
  * @author Koichi Asano
  *
  */
+@Published
 public class BasicStringResource implements StringResource {
 
     /**
      * メッセージID。
      */
-    private String id;
+    private final String id;
     /**
      * 言語をキーとした文字列のmap。
      */
-    private Map<String, String> formatMap;
+    private final Map<String, String> formatMap;
 
     /**
      * コンストラクタ。
